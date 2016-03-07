@@ -1,25 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="wfeApp">
 <head>
   <meta charset="UTF-8">
   <title>Team Directory</title>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/app.css" charset="utf-8">
+  <script src="bower_components/angular/angular.min.js" charset="utf-8"></script>
+  <script src="js/controllers.js" charset="utf-8"></script>
 </head>
-<body>
+<body ng-controller="PeopleListCtrl">
   <div class="container">
     <div class="row">
-      <dl class="dl-horizontal">
+      <dl class="dl-horizontal" ng-repeat="person in people">
         <dt>Employee Code</dt>
-          <dd>AT0220</dd>
+          <dd>{{person.empCode}}</dd>
         <dt>Full Name</dt>
-          <dd>Đinh Quang Huy</dd>
-      </dl>
-      <dl class="dl-horizontal">
-        <dt>Employee Code</dt>
-          <dd>AT0090</dd>
-        <dt>Full Name</dt>
-          <dd>Đặng Công Đạo</dd>
+          <dd>{{person.fullName}}</dd>
       </dl>
     </div>
   </div>
