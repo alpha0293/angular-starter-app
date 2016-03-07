@@ -13,5 +13,15 @@ wfeApp.controller('PeopleListCtrl', ['$scope', function ($scope) {
       'empCode': 'AT0090',
       'fullName': 'Đặng Công Đạo',
     },
+    {
+      'empCode': 'AT0003',
+      'fullName': 'Trần Đức Lộc',
+    },
+    {
+      'empCode': 'AT0006',
+      'fullName': 'Lê Thị Thanh Phúc',
+    },
   ];
+
+  $scope.order = 'empCode';
 }]);
