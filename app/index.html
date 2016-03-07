@@ -11,12 +11,22 @@
 <body ng-controller="PeopleListCtrl">
   <div class="container">
     <div class="row">
-      <dl class="dl-horizontal" ng-repeat="person in people">
-        <dt>Employee Code</dt>
-          <dd>{{person.empCode}}</dd>
-        <dt>Full Name</dt>
-          <dd>{{person.fullName}}</dd>
-      </dl>
+      <div class="col-md-2">
+        <form action="">
+          <div class="form-group">
+            <label for="search">Search</label>
+            <input type="text" class="form-control" id="search" ng-model="query">
+          </div>
+        </form>
+      </div>
+      <div class="col-md-10">
+        <dl class="dl-horizontal" ng-repeat="person in people | filter:query">
+          <dt>Employee Code</dt>
+            <dd>{{person.empCode}}</dd>
+          <dt>Full Name</dt>
+            <dd>{{person.fullName}}</dd>
+        </dl>
+      </div>
     </div>
   </div>
 </body>
