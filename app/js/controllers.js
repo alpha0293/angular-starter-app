@@ -5,33 +5,34 @@ var wfeControllers = angular.module('wfeControllers', []);
 
 // PeopleListCtrl for people listing page which detached from index.html in
 // previous steps.
-wfeControllers.controller('PeopleListCtrl', ['$scope', '$http', function ($scope, $http) {
-  $http.get('data/people.json').success(function(data) {
-    // Add codeName to each person which still missing from people.json
-    // Introduce angular.forEach() function.
-    angular.forEach(data, function (value, key) {
-      if (!value.image) {
-        value.image = 'http://placehold.it/200?text=' + value.fullName;
-      }
+wfeControllers.controller('PeopleListCtrl', ['$scope', 'Person',
+  function ($scope, Person) {
+    // So, we do query and get expected data back
+    $scope.people = Person.query(function (data) {
+      angular.forEach(data, function (value, key) {
+        if (!value.image) {
+          value.image = 'http://placehold.it/200?text=' + value.fullName;
+        }
 
-      // We get :codeName from username of workEmail
-      value.codeName = value.workEmail.split('@')[0];
+        // We get :codeName from username of workEmail
+        value.codeName = value.workEmail.split('@')[0];
+      });
     });
-    $scope.people = data;
-  });
 
-  $scope.order = 'empCode';
-}]);
+    $scope.order = 'empCode';
+  }
+]);
 
-// Controller for person detail page, in additional to $http, we use $routeParams
+// Controller for person detail page, in additional to Person, we use $routeParams
 // which retrieves our :codeName in the url to indecate specified person.
-wfeControllers.controller('PersonDetailCtrl', ['$scope', '$routeParams', '$http',
-  function ($scope, $routeParams, $http) {
-    $http.get('data/people/' + $routeParams.codeName + '.json').success(function (data) {
-      if (!data.image) {
-        data.image = 'http://placehold.it/200?text=' + data.fullName;
+wfeControllers.controller('PersonDetailCtrl', ['$scope', '$routeParams', 'Person',
+  function ($scope, $routeParams, Person) {
+    $scope.person = Person.get({
+      requestParam: 'people/' + $routeParams.codeName
+    }, function (person) {
+      if (!person.image) {
+        person.image = 'http://placehold.it/200?text=' + person.fullName;
       }
-      $scope.person = data;
     });
   }
 ]);
