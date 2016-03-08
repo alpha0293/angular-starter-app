@@ -24,7 +24,7 @@ wfeControllers.controller('PeopleListCtrl', ['$scope', '$http', function ($scope
 wfeControllers.controller('PersonDetailCtrl', ['$scope', '$routeParams', '$http',
   function ($scope, $routeParams, $http) {
     $http.get('data/people/' + $routeParams.codeName + '.json').success(function (data) {
-      $scope.phone = data;
+      $scope.person = data;
     });
   }
 ]);
