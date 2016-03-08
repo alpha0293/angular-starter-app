@@ -10,9 +10,13 @@ wfeControllers.controller('PeopleListCtrl', ['$scope', '$http', function ($scope
     // Add codeName to each person which still missing from people.json
     // Introduce angular.forEach() function.
     angular.forEach(data, function (value, key) {
+      if (!value.image) {
+        value.image = 'http://placehold.it/200?text=' + value.fullName;
+      }
+
       // We get :codeName from username of workEmail
       value.codeName = value.workEmail.split('@')[0];
-    })
+    });
     $scope.people = data;
   });
 
@@ -24,6 +28,9 @@ wfeControllers.controller('PeopleListCtrl', ['$scope', '$http', function ($scope
 wfeControllers.controller('PersonDetailCtrl', ['$scope', '$routeParams', '$http',
   function ($scope, $routeParams, $http) {
     $http.get('data/people/' + $routeParams.codeName + '.json').success(function (data) {
+      if (!data.image) {
+        data.image = 'http://placehold.it/200?text=' + data.fullName;
+      }
       $scope.person = data;
     });
   }
