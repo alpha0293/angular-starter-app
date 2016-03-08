@@ -27,12 +27,22 @@
         </form>
       </div>
       <div class="col-md-10">
-        <dl class="dl-horizontal" ng-repeat="person in people | filter:query | orderBy:order">
-          <dt>Employee Code</dt>
-            <dd>{{person.empCode}}</dd>
-          <dt>Full Name</dt>
-            <dd>{{person.fullName}}</dd>
-        </dl>
+        <div class="row">
+          <div class="col-md-3" ng-repeat="person in people | filter:query | orderBy:order">
+            <div class="thumbnail">
+              <a href="#/person/{{person.codeName}}">
+                <img ng-src="{{person.image}}" alt="{{person.fullName}}">
+              </a>
+              <div class="caption">
+                <a href="#/person/{{person.codeName}}">{{person.fullName}}</a>
+                <p>
+                  <span class="label label-default">{{person.empCode}}</span>
+                  <span class="label label-primary">{{person.jobTitle}}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
