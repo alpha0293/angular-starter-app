@@ -4,6 +4,7 @@
 var wfeApp = angular.module('wfeApp', [
   'ngRoute',        // All routing, navigating in the app goes here
   'wfeControllers', // Our beloved controller module collection
+  'wfeServices',    // Call our custom services
 ]);
 
 wfeApp.config(['$routeProvider', function ($routeProvider) {
