@@ -2,8 +2,8 @@
 
 // App module
 var wfeApp = angular.module('wfeApp', [
-  'ngRoute',
-  'wfeControllers',
+  'ngRoute',        // All routing, navigating in the app goes here
+  'wfeControllers', // Our beloved controller module collection
 ]);
 
 wfeApp.config(['$routeProvider', function ($routeProvider) {
@@ -12,10 +12,12 @@ wfeApp.config(['$routeProvider', function ($routeProvider) {
       templateUrl: 'view/people.html',
       controller: 'PeopleListCtrl',
     })
+    // :codeName as going to stand for person identity
     .when('/person/:codeName', {
       templateUrl: 'view/person.html',
       controller: 'PersonDetailCtrl',
     })
+    // any link goes beyond defined routes will be redirected to /people route.
     .otherwise({
       redirectTo: '/people',
     });
