@@ -20,6 +20,7 @@ wfeControllers.controller('PeopleListCtrl', ['$scope', 'Person',
     });
 
     $scope.order = 'empCode';
+
   }
 ]);
 
@@ -34,5 +35,6 @@ wfeControllers.controller('PersonDetailCtrl', ['$scope', '$routeParams', 'Person
         person.image = 'http://placehold.it/200?text=' + person.fullName;
       }
     });
+
   }
 ]);

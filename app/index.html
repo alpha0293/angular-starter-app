@@ -14,8 +14,14 @@
 </head>
 <body>
   <div class="container">
+    <div ng-controller="HeaderPartialCtrl">
+      <div ng-include src="'view/partial/header.html'"></div>
+    </div>
     <div class="row">
       <div ng-view></div>
+    </div>
+    <div ng-controller="FooterPartialCtrl">
+      <div ng-include src="'view/partial/footer.html'"></div>
     </div>
   </div>
 </body>
